@@ -6,6 +6,7 @@ indent() {
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+ELM_VERSION=${ELM_VERSION:-0.19.1}
 
 if ! [ -f $CACHE_DIR/elm ]; then
   echo "-----> Downloading Elm $ELM_VERSION"
