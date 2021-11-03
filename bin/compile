@@ -8,15 +8,12 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ELM_VERSION=${ELM_VERSION:-0.19.1}
 
-if ! [ -f $CACHE_DIR/elm ]; then
+if ! [ -f $CACHE_DIR/elm.gz ]; then
   echo "-----> Downloading Elm $ELM_VERSION"
   curl -L -q -o $CACHE_DIR/elm.gz https://github.com/elm/compiler/releases/download/$ELM_VERSION/binary-for-linux-64-bit.gz
-  gunzip $CACHE_DIR/elm.gz
 fi
 
 echo "-----> Installing Elm $ELM_VERSION"
-cp $CACHE_DIR/elm $BUILD_DIR/bin
-chmod +x $BUILD_DIR/elm
-
-echo elm --version
-echo "Path is $PATH"
+mkdir $BUILD_DIR/bin
+gunzip -c $CACHE_DIR/elm.gz > $BUILD_DIR/bin/elm
+chmod +x $BUILD_DIR/bin/elm
