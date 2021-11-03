@@ -9,7 +9,7 @@ CACHE_DIR=$2
 
 if ! [ -f $CACHE_DIR/elm ]; then
   echo "-----> Downloading Elm $ELM_VERSION"
-  curl -L -o $CACHE_DIR/elm.gz https://github.com/elm/compiler/releases/download/$ELM_VERSION/binary-for-linux-64-bit.gz
+  curl -L -q -o $CACHE_DIR/elm.gz https://github.com/elm/compiler/releases/download/$ELM_VERSION/binary-for-linux-64-bit.gz
   gunzip $CACHE_DIR/elm.gz
 fi
 
